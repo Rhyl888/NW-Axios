@@ -1,17 +1,17 @@
-import path from 'path'
-import { defineConfig } from 'vite'
+import path from 'node:path';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   build: {
     lib: {
       entry: './src/index.ts',
-      name: 'ts-lib',
-      fileName: 'ts-lib'
+      name: 'ts-axios',
+      fileName: 'ts-axios'
     }
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'lib')
     }
   }
-})
+});

@@ -1,37 +1,37 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "es2015",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "baseUrl": ".",
+    "module": "es2015",
     "moduleResolution": "node",
 
+    "paths": {
+      "@/*": ["lib/*"]
+    },
+    "typeRoots": ["node_modules/@types"],
     /* Bundler mode */
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "noEmit": true,
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
-    "sourceMap": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "declarationDir": "dist/types",
+    "noEmit": true,
     "outDir": "dist/lib",
-    "typeRoots": ["node_modules/@types"],
-
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["lib"]
 }
