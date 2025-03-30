@@ -37,6 +37,28 @@ export interface AxiosResponse<T = any> {
 
 export interface AxiosPromise<T = any> extends Promise<AxiosResponse<T>> {}
 
+export type AxiosErrorCode =
+  | 'ERR_BAD_OPTION'
+  | 'ERR_BAD_OPTION_VALUE'
+  | 'ECONNABORTED'
+  | 'ERR_BAD_REQUEST'
+  | 'ERR_NETWORK'
+  | 'ERR_CANCELED'
+  | 'ERR_INVALID_URL'
+  | 'ERR_TIMEOUT'
+  | 'ERR_BAD_RESPONSE'
+  | 'ERR_NOT_SUPPORT'
+  | 'ERR_MISSED_CALLBACK'
+  | 'ERR_BAD_METHOD';
+
+export interface AxiosError extends Error {
+  isAxiosError: boolean;
+  config: AxiosRequestConfig;
+  code?: AxiosErrorCode | null;
+  request?: XMLHttpRequest;
+  response?: AxiosResponse;
+}
+
 export interface Axios {
   defaults: AxiosRequestConfig;
   request: <T = any>(config: AxiosRequestConfig) => AxiosPromise<T>;

@@ -1,5 +1,6 @@
 import type { AxiosRequestConfig, AxiosInstance } from './types';
 import Axios from './core/Axios';
+import defaults from './defaults';
 
 function createInstance(config: AxiosRequestConfig) {
   const context = new Axios(config);
@@ -7,16 +8,6 @@ function createInstance(config: AxiosRequestConfig) {
   return context as AxiosInstance;
 }
 
-const axios = createInstance({
-  method: 'GET',
-  headers: {
-    common: {
-      Accept: 'application/json'
-    }
-  },
-  validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-});
+const axios = createInstance(defaults);
 
 export default axios;
