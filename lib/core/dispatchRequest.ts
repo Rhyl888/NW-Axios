@@ -1,8 +1,25 @@
 import type { AxiosPromise, AxiosRequestConfig, AxiosResponse } from '@/types';
 import { createError, ErrorCodes } from './AxiosError';
+import { buildURL, combineURLs, isAbsoluteURL } from '@/helpers/url';
+import { flattenHeaders } from '@/helpers/headers';
 
 export default function dispatchRequest(config: AxiosRequestConfig): Promise<any> {
+  processConfig(config);
   return xhr(config);
+}
+
+function processConfig(config: AxiosRequestConfig) {
+  config.url = transformURL(config);
+  // config.data = transform()
+  config.headers = flattenHeaders(config.headers, config.method!);
+}
+
+export function transformURL(config: AxiosRequestConfig): string {
+  const { url, params, baseURL } = config;
+
+  const fullPath = baseURL && !isAbsoluteURL(url!) ? combineURLs(baseURL, url!) : url;
+
+  return buildURL(fullPath!, params, config.paramsSerializer);
 }
 
 function xhr(config: AxiosRequestConfig): AxiosPromise {
