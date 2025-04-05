@@ -22,9 +22,9 @@ export default class AxiosError extends Error implements IAxiosError {
     Object.setPrototypeOf(this, AxiosError.prototype);
 
     // Node 环境下，Error.captureStackTrace
-    // if (isFunction(Error.captureStackTrace)) {
-    //   Error.captureStackTrace(this, AxiosError);
-    // }
+    if (isFunction(Error.captureStackTrace)) {
+      Error.captureStackTrace(this, AxiosError);
+    }
 
     this.stack = new Error().stack;
   }

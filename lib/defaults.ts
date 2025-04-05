@@ -1,6 +1,8 @@
 import { AxiosRequestConfig } from './types';
 
 export default {
+  timeout: 0,
+  adapter: 'xhr',
   method: 'GET',
   headers: {
     common: {

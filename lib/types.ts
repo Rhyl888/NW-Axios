@@ -24,6 +24,13 @@ export interface AxiosRequestConfig {
   params?: any;
   headers?: IHeaders | null;
   baseURL?: string;
+  timeout?: number;
+  responseType?: XMLHttpRequestResponseType;
+  adapter?:
+    | 'http'
+    | 'xhr'
+    | 'fetch'
+    | ((config: AxiosRequestConfig) => AxiosPromise);
   validateStatus?: (status: number) => boolean;
   paramsSerializer?: (params: Params) => string;
 }
